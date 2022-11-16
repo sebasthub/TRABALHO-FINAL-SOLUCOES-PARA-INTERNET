@@ -53,6 +53,17 @@ class ManutencaoService {
             });
         });
     }
+    public deletaManutencao(id: Number) {
+        return new Promise((aceito, rejeitado) => {
+            db.query(
+            `DELETE FROM db.manutencao
+            WHERE idmanutencao = ${id};`
+            , (error, results) => {
+                if (error) { rejeitado(error); return; } 
+                aceito(results);
+            });
+        });
+    }
 }
 
 export const manutencaoService = new ManutencaoService();

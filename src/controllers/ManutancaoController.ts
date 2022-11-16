@@ -24,6 +24,12 @@ class ManutencaoController {
         response: resp,
       });
   }
+  public async delete(req: Request, res: Response){
+    const resp = await manutencaoService.deletaManutencao(Number(req.params.id));
+    return res.json({
+        response: resp,
+      });
+  }
 }
 
 export const manutencaoController = new ManutencaoController();

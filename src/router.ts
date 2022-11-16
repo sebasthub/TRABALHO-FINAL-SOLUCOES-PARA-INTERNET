@@ -9,5 +9,6 @@ router.get("/", firstController.home);
 router.get("/manutencoes", manutencaoController.list);
 router.post("/manutencoes", manutencaoController.post);
 router.put("/manutencoes/:id", manutencaoController.put)
+router.delete("/manutencoes/:id", manutencaoController.delete)
 
 export { router };
