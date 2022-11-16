@@ -1,13 +1,21 @@
 import { Request, Response } from "express";
+import { Manutencao } from "../model/Manutencao";
 import { manutencaoService } from "../services/ManutencaoService";
 
 class ManutencaoController {
     
   public async list(req: Request, res: Response) {
-    const lista = await manutencaoService.buscarTodos()
+    const lista = await manutencaoService.buscarTodos();
     return res.json({
       response: lista,
     });
+  }
+  public async post(req: Request, res: Response) {
+    const manutencao: Manutencao = req.body;
+    const resp = await manutencaoService.postarManutencao(manutencao);
+    return res.json({
+        response: resp,
+      });
   }
 }
 

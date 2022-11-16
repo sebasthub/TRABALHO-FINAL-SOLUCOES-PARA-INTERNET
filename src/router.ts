@@ -7,5 +7,6 @@ const router: Router = Router();
 //Routes
 router.get("/", firstController.home);
 router.get("/manutencoes", manutencaoController.list);
+router.post("/manutencoes", manutencaoController.post)
 
 export { router };
