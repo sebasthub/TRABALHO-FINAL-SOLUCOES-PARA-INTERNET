@@ -17,6 +17,13 @@ class ManutencaoController {
         response: resp,
       });
   }
+  public async put(req: Request, res: Response){
+    const manutencao: Manutencao = req.body;
+    const resp = await manutencaoService.atualizarManutencao(manutencao, Number(req.params.id));
+    return res.json({
+        response: resp,
+      });
+  }
 }
 
 export const manutencaoController = new ManutencaoController();

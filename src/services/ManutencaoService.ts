@@ -35,6 +35,24 @@ class ManutencaoService {
             });
         });
     }
+    public atualizarManutencao(manutencao: Manutencao,id: Number) {
+        return new Promise((aceito, rejeitado) => {
+            db.query(
+                `UPDATE db.manutencao
+                SET
+                data = '${manutencao.data}',
+                solicitante ='${manutencao.solicitante}',
+                veiculo = '${manutencao.veiculo}',
+                empresa_manutencao = '${manutencao.empresa_manutencao}',
+                retorno = '${manutencao.retorno}',
+                valor = ${manutencao.valor},
+                problemas = '${manutencao.problemas}'
+                WHERE idmanutencao = ${id};`, (error, results) => {
+                if (error) { rejeitado(error); return; } 
+                aceito(results);
+            });
+        });
+    }
 }
 
 export const manutencaoService = new ManutencaoService();
