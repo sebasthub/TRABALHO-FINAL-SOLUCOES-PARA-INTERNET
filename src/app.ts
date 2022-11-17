@@ -1,5 +1,7 @@
 import express from "express";
 import { router } from "./router";
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 const cors = require('cors');
 export class App{
   public server: express.Application = express();
@@ -10,6 +12,8 @@ export class App{
     this.server;
     this.middleware();
     this.router();
+    this.usecors();
+    this.swagerui();
   }
 
   private middleware(){
@@ -22,6 +26,10 @@ export class App{
 
   private usecors(){
     this.server.use(cors())
+  }
+
+  private swagerui(){
+    this.server.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
   }
 
 }
