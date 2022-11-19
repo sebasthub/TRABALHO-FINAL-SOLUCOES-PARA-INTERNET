@@ -1,16 +1,19 @@
 {
   "name": "TRABALHO-FINAL-SOLUCOES-PARA-INTERNET",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "dependencies": {
+    "@types/jest": "^29.2.3",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jest": "^29.3.1",
     "mysql2": "^2.3.3",
     "swagger-autogen": "^2.22.0",
-    "swagger-ui-express": "^4.1.4"
+    "swagger-ui-express": "^4.1.4",
+    "ts-jest": "^29.0.3"
   },
   "scripts": {
     "swagger-autogen": "node src/swagger.js",
@@ -22,5 +25,8 @@
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1"
-  }
+  },
+  "description": "trabalho final para disciplina de solucoes para internet",
+  "repository": "https://github.com/sebasthub/TRABALHO-FINAL-SOLUCOES-PARA-INTERNET.git",
+  "author": "sebasthub <sebastiaonogueira@unitins.br>"
 }
