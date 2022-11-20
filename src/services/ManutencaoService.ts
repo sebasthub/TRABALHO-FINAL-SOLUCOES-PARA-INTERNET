@@ -1,3 +1,4 @@
+import { ListFormat } from "typescript";
 import db from "../db"
 import { Manutencao } from "../model/Manutencao";
 
@@ -11,8 +12,8 @@ class ManutencaoService {
         });
     }
     public postarManutencao(manutencao: Manutencao){
-        return new Promise((aceito, rejeitado) => {
-            db.query(`INSERT INTO db.manutencao
+        new Promise((aceito, rejeitado) => {
+            db.query(`INSERT INTO manutencao
             (
             data,
             solicitante,
@@ -29,7 +30,14 @@ class ManutencaoService {
                 '${manutencao.empresa_manutencao}',
                 '${manutencao.retorno}',
                 '${manutencao.valor}',
-                '${manutencao.problemas}');`, (error, results) => {
+                '${manutencao.problemas}'); 
+                `, (error, results) => {
+                if (error) { rejeitado(error); return; } 
+                aceito(results);
+            });
+        });
+        return new Promise((aceito, rejeitado) => {
+            db.query('SELECT LAST_INSERT_ID();', (error, results) => {
                 if (error) { rejeitado(error); return; } 
                 aceito(results);
             });
@@ -38,7 +46,7 @@ class ManutencaoService {
     public atualizarManutencao(manutencao: Manutencao,id: Number) {
         return new Promise((aceito, rejeitado) => {
             db.query(
-                `UPDATE db.manutencao
+                `UPDATE manutencao
                 SET
                 data = '${manutencao.data}',
                 solicitante ='${manutencao.solicitante}',
@@ -56,7 +64,7 @@ class ManutencaoService {
     public deletaManutencao(id: Number) {
         return new Promise((aceito, rejeitado) => {
             db.query(
-            `DELETE FROM db.manutencao
+            `DELETE FROM manutencao
             WHERE idmanutencao = ${id};`
             , (error, results) => {
                 if (error) { rejeitado(error); return; } 

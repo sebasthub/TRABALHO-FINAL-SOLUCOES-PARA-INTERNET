@@ -24,6 +24,7 @@ class ManutencaoController {
     } */
     const manutencao: Manutencao = req.body;
     const resp = await manutencaoService.postarManutencao(manutencao);
+    res.status(201);
     return res.json({
         response: resp,
       });
