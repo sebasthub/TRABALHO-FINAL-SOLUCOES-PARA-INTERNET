@@ -1,0 +1,15 @@
+para rodar o serviço de testes primeiro deve usar o comando export TESTE=TRUE
+para remover o estado de testes use unset TESTE
+para rodar os testes use yarn test
+para rodar o codigo use yarn start
+para documentar o codigo(recomendado antes de rodar) use yarn swagger-autogen
+para usar a documentação use /doc
+IMPORTANTE ANTES DE RODAR QUALQUER COISA RODE O SCRIPT SQL
+IMPORTANTE SE A ENV ESTIVER FALTANDO CRIE variaveis.env COM ESSE MODELO 
+PORT=3000
+DB_HOST=
+DB_USER=
+DB_PASS=
+DB_NAME=db
+DB_TESTE_NAME=db_teste
+OS NOMES SAO AUTO DESCRITIVOS
