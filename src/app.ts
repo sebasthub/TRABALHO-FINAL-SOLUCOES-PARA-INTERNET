@@ -18,6 +18,7 @@ export class App{
 
   constructor(){
     this.server;
+    this.server.use(cors())
     this.middleware();
     this.router();
     this.usecors();

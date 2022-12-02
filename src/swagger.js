@@ -10,7 +10,7 @@ const doc = {
         "title": "REST API",
         "description": ""
     },
-    host: "localhost:3000",
+    host: "localhost:3001",
     basePath: "/",
     schemes: [
         "http"
