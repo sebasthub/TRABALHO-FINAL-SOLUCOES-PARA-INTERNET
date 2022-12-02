@@ -23,7 +23,7 @@ class ManutencaoController {
     } */
     const manutencao: Manutencao = req.body;
     try {
-      const resp = await manutencaoService.postarManutencao(manutencao);
+      const resp = await manutencaoService.save(manutencao);
       res.status(201);
       return res.json({
         response: resp,
@@ -47,7 +47,7 @@ class ManutencaoController {
     } */
     const manutencao: Manutencao = req.body;
     try {
-      const resp = await manutencaoService.atualizarManutencao(
+      const resp = await manutencaoService.atualizar(
         manutencao,
         Number(req.params.id)
       );
@@ -65,7 +65,24 @@ class ManutencaoController {
     /* #swagger.tags = ['Manutenção programada']
            #swagger.description = 'Endpoint para deletar uma Manutenção programada.' */
     try {
-      const resp = await manutencaoService.deletaManutencao(
+      const resp = await manutencaoService.deletar(
+        Number(req.params.id)
+      );
+      return res.json({
+        response: resp,
+      });
+    } catch (e) {
+      res.status(503);
+      return res.json({
+        error: e,
+      });
+    }
+  }
+  public async getUm(req: Request, res: Response){
+    /* #swagger.tags = ['Manutenção programada']
+           #swagger.description = 'Endpoint para pegar uma Manutenção programada.' */
+    try {
+      const resp = await manutencaoService.vemUm(
         Number(req.params.id)
       );
       return res.json({
